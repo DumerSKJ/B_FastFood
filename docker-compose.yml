@@ -1,7 +1,9 @@
+name: fastfood
+
 services:
-  app:
+  xampp:
     build: .
-    container_name: venta_comida_rapida_app
+    container_name: fastfood_xampp
     ports:
       - "8083:80"
       - "9003:9003"
@@ -11,18 +13,18 @@ services:
     environment:
       - APACHE_DOCUMENT_ROOT=/var/www/html
     depends_on:
-      - db
+      - database
     networks:
       - app-network
 
-  db:
+  database:
     image: postgres:17
-    container_name: negocio_comida_rapida
+    container_name: fastfood_database
     restart: always
     environment:
-      POSTGRES_DB: negocio_comida_rapida
-      POSTGRES_USER: user_admin
-      POSTGRES_PASSWORD: password_secret
+      POSTGRES_DB: fastfood_db
+      POSTGRES_USER: fastfood_rood
+      POSTGRES_PASSWORD: password_@2024
     ports:
       - "5434:5432"
     volumes:
