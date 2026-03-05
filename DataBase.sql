@@ -208,15 +208,6 @@ VALUES (
         'dev@sistema.com',
         NULL,
         '2025-12-27 16:39:12'
-    ),
-    (
-        4,
-        '43390175',
-        'JESSICA JANET',
-        'CAMPOS SALINAS',
-        '',
-        '-',
-        '2026-01-30 15:47:20'
     );
 
 SELECT pg_catalog.setval (
