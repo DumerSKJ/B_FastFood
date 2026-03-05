@@ -1,8 +1,0 @@
-vendor/
-.git/
-.env
-.vscode/
-db_data/
-Dockerfile
-docker-compose.yml
-node_modules/
