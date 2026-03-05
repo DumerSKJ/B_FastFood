@@ -1,0 +1,41 @@
+name: fastfood
+
+services:
+  xampp:
+    build: .
+    container_name: fastfood_xampp
+    ports:
+      - "8083:80"
+      - "9003:9003"
+    volumes:
+      - .:/var/www/html
+      - /var/www/html/vendor
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+    depends_on:
+      - database
+    networks:
+      - app-network
+
+  database:
+    image: postgres:17
+    container_name: fastfood_database
+    restart: always
+    environment:
+      POSTGRES_DB: fastfood_db
+      POSTGRES_USER: fastfood_root
+      POSTGRES_PASSWORD: fastfood_@2026
+    ports:
+      - "5434:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+      - ./DataBase.sql:/docker-entrypoint-initdb.d/init-db.sql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  db_data:
